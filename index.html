@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <input id="score" value="0" disabled/>
+        <div class="background">
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+            <img src="./imgs/cloud.svg"/>
+        </div>
+    </div>
+    <script type="module">
+        import addBallons from './js/addBallons.js'
+
+        const container = document.querySelector('.content')
+        const score = document.getElementById('score')
+        let time = 500
+
+        function popBallon(e){
+            var context = new Audio("popBallon.mp3")
+            context.play()
+            e.target.parentNode.removeChild(e.target)
+            score.value++
+        }   
+
+        setInterval(() => {
+            addBallons(container,popBallon)
+            time = 500 * (Math.random()+1)
+        },time)
+
+    </script>
+</body>
+</html>
